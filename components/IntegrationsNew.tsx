@@ -13,7 +13,7 @@ const platforms = [
 
 export default function IntegrationsNew() {
     return (
-        <section className="min-h-screen py-32 px-6 bg-black text-white overflow-hidden w-full relative flex items-center">
+        <section className="py-20 px-6 bg-black text-white overflow-hidden w-full relative">
             {/* Background gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-[#0a0a0a]" />
 
@@ -24,19 +24,19 @@ export default function IntegrationsNew() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-20"
+                    className="text-center mb-16"
                 >
-                    <h2 className="text-6xl md:text-7xl font-bold mb-6">
+                    <h2 className="text-5xl md:text-6xl font-bold mb-4">
                         Replace All Your Platforms <br />
                         With <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">FLOW.</span>
                     </h2>
-                    <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                    <p className="text-lg text-gray-400 max-w-3xl mx-auto">
                         Seamless plug-and-play setup - we handle the full transition so your team can get building faster.
                     </p>
                 </motion.div>
 
                 {/* Connection Visualization */}
-                <div className="relative h-[600px] w-full max-w-5xl mx-auto">
+                <div className="relative h-[450px] w-full max-w-5xl mx-auto">
                     {/* SVG for curved lines from platforms to center */}
                     <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
                         <defs>
@@ -168,19 +168,9 @@ export default function IntegrationsNew() {
                             zIndex: 3
                         }}
                     >
-                        <motion.div
-                            animate={{
-                                boxShadow: [
-                                    "0 0 20px rgba(59, 130, 246, 0.5)",
-                                    "0 0 40px rgba(59, 130, 246, 0.8)",
-                                    "0 0 20px rgba(59, 130, 246, 0.5)"
-                                ]
-                            }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                            className="text-6xl"
-                        >
+                        <div className="text-5xl text-blue-400">
                             ✦
-                        </motion.div>
+                        </div>
                     </motion.div>
                 </div>
             </div>

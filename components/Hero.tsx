@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Hero() {
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-20 overflow-hidden bg-[#050505]">
+        <section className="relative min-h-[70vh] flex flex-col items-center justify-center px-6 pt-24 pb-0 overflow-hidden bg-[#050505]">
             {/* Animated background gradients with grid */}
             <div className="absolute inset-0 overflow-hidden">
                 {/* Gradient orbs */}
@@ -73,18 +73,18 @@ export default function Hero() {
             </div>
 
             {/* Main content */}
-            <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
+            <div className="relative z-10 max-w-5xl mx-auto text-center space-y-6">
                 {/* Hero headline */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="space-y-4"
+                    className="space-y-2"
                 >
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
                         Cut The Chaos.
                     </h1>
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
                         Build The Future.
                     </h1>
                 </motion.div>
@@ -94,7 +94,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
+                    className="text-base md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
                 >
                     It's the operating system for architecture studios - one intelligent platform that brings projects, people, and progress together.
                 </motion.p>
@@ -115,94 +115,71 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
-                    className="pt-16 space-y-8"
+                    className="pt-12 space-y-8 pb-0"
                 >
-                    <p className="text-sm text-gray-500 font-medium tracking-wider">
+                    <p className="text-sm text-gray-400 font-medium tracking-wider">
                         Replace All Your Platforms With <span className="text-white font-bold">FLOW.</span>
                     </p>
 
-                    {/* Logo carousel */}
-                    <div className="relative overflow-hidden py-4">
+                    {/* Logos Carousel */}
+                    <div className="w-full overflow-hidden">
                         <motion.div
-                            initial={{ x: 0 }}
+                            className="flex items-center gap-16 w-max"
                             animate={{ x: "-50%" }}
                             transition={{
-                                duration: 20,
-                                repeat: Infinity,
+                                duration: 30,
                                 ease: "linear",
+                                repeat: Infinity,
                             }}
-                            className="flex items-center gap-12 md:gap-16"
                         >
-                            {/* Double the logos for seamless loop */}
-                            {[...Array(2)].map((_, setIndex) => (
-                                <div key={setIndex} className="flex items-center gap-12 md:gap-16 shrink-0">
-                                    {/* Procore */}
-                                    <div className="text-gray-600 hover:text-gray-400 transition-colors shrink-0">
-                                        <svg className="h-6 md:h-8 w-auto" viewBox="0 0 80 20" fill="currentColor">
-                                            <path d="M8 2h4c3.3 0 6 2.7 6 6s-2.7 6-6 6H8V2zm0 16v-2h4c4.4 0 8-3.6 8-8s-3.6-8-8-8H6v18h2z"/>
+                            {[...Array(2)].map((_, i) => (
+                                <div key={i} className="flex items-center gap-16 shrink-0">
+                                    {/* ClickUp */}
+                                    <div className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors duration-300">
+                                        <svg className="h-5 w-auto" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M2.5 12l2-2 5.5 5.5 9.5-9.5 2 2-11.5 11.5z" stroke="currentColor" strokeWidth="1" />
                                         </svg>
+                                        <span className="text-lg font-semibold">ClickUp</span>
                                     </div>
 
                                     {/* QuickBooks */}
-                                    <div className="flex items-center gap-2 text-gray-600 hover:text-gray-400 transition-colors shrink-0">
-                                        <svg className="h-6 md:h-8 w-auto" viewBox="0 0 24 24" fill="currentColor">
-                                            <circle cx="8" cy="8" r="4"/>
-                                            <circle cx="16" cy="16" r="4"/>
-                                        </svg>
-                                        <span className="text-base md:text-lg font-semibold">quickbooks</span>
+                                    <div className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors duration-300">
+                                        <span className="text-lg font-bold">qb quickbooks</span>
                                     </div>
 
                                     {/* Slack */}
-                                    <div className="flex items-center gap-2 text-gray-600 hover:text-gray-400 transition-colors shrink-0">
-                                        <svg className="h-6 md:h-8 w-auto" viewBox="0 0 24 24" fill="currentColor">
-                                            <rect x="3" y="3" width="4" height="4" rx="1"/>
-                                            <rect x="10" y="3" width="4" height="4" rx="1"/>
-                                            <rect x="17" y="3" width="4" height="4" rx="1"/>
-                                            <rect x="3" y="10" width="4" height="4" rx="1"/>
-                                            <rect x="10" y="10" width="4" height="4" rx="1"/>
-                                            <rect x="17" y="10" width="4" height="4" rx="1"/>
+                                    <div className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors duration-300">
+                                        <svg className="h-5 w-auto" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.52v-6.315zm8.834-5.042a2.528 2.528 0 0 1 2.521-2.521A2.528 2.528 0 0 1 20.19 10.123a2.528 2.528 0 0 1-2.521 2.521h-2.521v-2.521zM13.876 8.835a2.528 2.528 0 0 1-2.52-2.521 2.527 2.527 0 0 1 2.52-2.521h6.313A2.528 2.528 0 0 1 22.71 6.314a2.528 2.528 0 0 1-2.52 2.521h-6.314zM6.313 5.042a2.528 2.528 0 0 1-2.521 2.52A2.528 2.528 0 0 1 1.27 5.042a2.528 2.528 0 0 1 2.522-2.521h2.52v2.521zm2.522 3.793a2.528 2.528 0 0 1 2.52 2.521V17.67a2.528 2.528 0 0 1-2.52 2.521 2.528 2.528 0 0 1-2.521-2.521V8.835zm8.834 6.33a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521v-2.52h2.521zM15.147 8.835a2.528 2.528 0 0 1-2.521-2.52V0a2.528 2.528 0 0 1 2.52 2.521 2.528 2.528 0 0 1 2.522 2.521v3.793z"/>
                                         </svg>
-                                        <span className="text-base md:text-lg font-semibold">slack</span>
+                                        <span className="text-lg font-bold">slack</span>
                                     </div>
 
                                     {/* Clockify */}
-                                    <div className="flex items-center gap-2 text-gray-600 hover:text-gray-400 transition-colors shrink-0">
-                                        <svg className="h-6 md:h-8 w-auto" viewBox="0 0 24 24" fill="currentColor">
-                                            <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="2"/>
-                                            <path d="M12 12L16 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                                    <div className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors duration-300">
+                                        <svg className="h-5 w-auto" viewBox="0 0 24 24" fill="currentColor">
+                                            <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" fill="none"/>
+                                            <path d="M12 7v5l3 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                                         </svg>
-                                        <span className="text-base md:text-lg font-semibold">clockify</span>
+                                        <span className="text-lg font-semibold">Clockify</span>
                                     </div>
 
                                     {/* Notion */}
-                                    <div className="flex items-center gap-2 text-gray-600 hover:text-gray-400 transition-colors shrink-0">
-                                        <svg className="h-6 md:h-8 w-auto" viewBox="0 0 24 24" fill="currentColor">
-                                            <rect x="4" y="4" width="16" height="16" rx="2" fill="currentColor"/>
-                                            <path d="M8 8h8M8 12h8M8 16h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                    <div className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors duration-300">
+                                        <svg className="h-5 w-auto" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M4 4v16h16V4H4zm2 2h12v12H6V6zm3 2v8l5-6v6h2V8h-2l-5 6V8H9z" />
                                         </svg>
-                                        <span className="text-base md:text-lg font-semibold">Notion</span>
+                                        <span className="text-lg font-semibold">Notion</span>
                                     </div>
-
-                                    {/* Plus icon */}
-                                    <div className="text-gray-700 text-2xl shrink-0">+</div>
                                 </div>
                             ))}
                         </motion.div>
                     </div>
                 </motion.div>
-            </div>
 
-            {/* Scroll indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, y: [0, 10, 0] }}
-                transition={{ opacity: { delay: 1.2 }, y: { duration: 2, repeat: Infinity } }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2"
-            >
-                <div className="w-6 h-10 border-2 border-gray-700 rounded-full flex items-start justify-center p-2">
-                    <div className="w-1 h-2 bg-gray-600 rounded-full" />
-                </div>
-            </motion.div>
+                {/* Bottom Blue Glow */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[150px] bg-blue-600/20 blur-[80px] rounded-full pointer-events-none" />
+            </div>
         </section>
     );
 }
