@@ -3,46 +3,77 @@
 import { motion } from "framer-motion";
 
 const platforms = [
-    { name: "Notion", icon: "📝", position: { top: "10%", left: "20%" } },
-    { name: "Asana", icon: "✦", position: { top: "10%", left: "50%" } },
-    { name: "Monday", icon: "📊", position: { top: "10%", left: "80%" } },
-    { name: "Trello", icon: "▦", position: { top: "40%", left: "35%" } },
-    { name: "ClickUp", icon: "⚡", position: { top: "40%", left: "65%" } },
-    { name: "Jira", icon: "🔷", position: { top: "70%", left: "50%" } },
+    {
+        name: "Notion",
+        icon: "https://framerusercontent.com/images/WdDj7tpYLeOYZCCLZnc9blwYqw.png",
+    },
+    {
+        name: "Asana",
+        icon: "https://framerusercontent.com/images/lwC8A4acEtviLVJB1j9c77G2lCs.svg",
+    },
+    {
+        name: "Monday",
+        icon: "https://framerusercontent.com/images/hJSghgHgWLCjXFPo3MkU17KlSg.svg",
+    },
+    {
+        name: "Trello",
+        icon: "https://framerusercontent.com/images/bcNsMLnEo1im42fDUUcYht3D9EU.png",
+    },
+    {
+        name: "ClickUp",
+        icon: "https://framerusercontent.com/images/mrwqzelYcnumKD2xctC7e71M.png",
+    },
+    {
+        name: "Airtable",
+        icon: "https://framerusercontent.com/images/QgfJxmHrGkoJd5YWrqMkhtV1K4.webp",
+    },
 ];
 
 export default function IntegrationsNew() {
     return (
-        <section className="py-20 px-6 bg-black text-white overflow-hidden w-full relative">
-            {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-[#0a0a0a]" />
-
-            <div className="max-w-7xl mx-auto relative z-10 w-full">
+        <section className="py-32 px-6 bg-[#050505] text-white overflow-hidden w-full relative min-h-screen flex flex-col items-center justify-center">
+            <div className="max-w-5xl mx-auto relative z-10 w-full text-center">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-16"
+                    className="mb-24"
                 >
-                    <h2 className="text-5xl md:text-6xl font-bold mb-4">
-                        Replace All Your Platforms <br />
-                        With <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">FLOW.</span>
+                    <h2 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+                        Replace All Your Platforms With <span className="text-white">FLOW.</span>
                     </h2>
-                    <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+                    <p className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         Seamless plug-and-play setup - we handle the full transition so your team can get building faster.
                     </p>
                 </motion.div>
 
                 {/* Connection Visualization */}
-                <div className="relative h-[450px] w-full max-w-5xl mx-auto">
-                    {/* SVG for curved lines from platforms to center */}
-                    <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
+                <div className="relative w-full max-w-4xl mx-auto h-[400px]">
+                    
+                    {/* Icons Row */}
+                    <div className="grid grid-cols-6 gap-4 items-center relative z-20">
+                        {platforms.map((platform, i) => (
+                            <div key={i} className="flex justify-center">
+                                <motion.div
+                                    initial={{ opacity: 0, y: -20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                                    className="w-20 h-20 bg-[#0A0A0A] rounded-[24px] border border-white/5 flex items-center justify-center shadow-2xl hover:border-white/10 transition-colors overflow-hidden p-4"
+                                >
+                                    <img src={platform.icon} alt={platform.name} className="w-full h-full object-contain opacity-90" />
+                                </motion.div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Connecting Lines SVG */}
+                    <svg className="absolute top-10 left-0 w-full h-full pointer-events-none" style={{ zIndex: 10 }}>
                         <defs>
-                            {/* Blue glow filter */}
-                            <filter id="glow">
-                                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                            <filter id="glow-blue">
+                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
                                 <feMerge>
                                     <feMergeNode in="coloredBlur"/>
                                     <feMergeNode in="SourceGraphic"/>
@@ -50,128 +81,91 @@ export default function IntegrationsNew() {
                             </filter>
                         </defs>
 
-                        {/* Draw curved paths from each platform to bottom center */}
-                        {platforms.map((platform, i) => {
-                            const startX = platform.position.left === "20%" ? "20%" : 
-                                          platform.position.left === "35%" ? "35%" :
-                                          platform.position.left === "50%" ? "50%" :
-                                          platform.position.left === "65%" ? "65%" : "80%";
-                            const startY = platform.position.top;
+                        {/* Lines from each icon to center bottom */}
+                        {platforms.map((_, i) => {
+                            // Calculate start X based on grid distribution
+                            // Each item is 1/6th of width. Center is (1/6 * i) + (1/12)
+                            const startX = `${(i * (100 / 6)) + (100 / 12)}%`; 
                             
                             return (
                                 <g key={i}>
-                                    {/* Curved path */}
+                                    {/* Base Line */}
                                     <motion.path
-                                        d={`M ${startX} ${startY} Q ${startX} 85%, 50% 95%`}
-                                        stroke="rgba(100, 100, 100, 0.3)"
-                                        strokeWidth="1.5"
+                                        d={`M ${startX} 80 Q 50% 220, 50% 320`}
+                                        stroke="#222"
+                                        strokeWidth="2"
                                         fill="none"
                                         initial={{ pathLength: 0, opacity: 0 }}
-                                        whileInView={{ pathLength: 1, opacity: 1 }}
+                                        whileInView={{ pathLength: 1, opacity: 0.7 }}
                                         viewport={{ once: true }}
-                                        transition={{ duration: 1.5, delay: i * 0.15, ease: "easeOut" }}
+                                        transition={{ duration: 1.5, delay: 0.5 + (i * 0.1), ease: "easeInOut" }}
+                                    />
+                                    {/* Flowing Light Particle */}
+                                    <motion.path
+                                        d={`M ${startX} 40 C ${startX} 200, 50% 200, 50% 320`}
+                                        stroke="#fff"
+                                        strokeWidth="6"
+                                        fill="none"
+                                        filter="url(#glow-blue)"
+                                        initial={{ strokeDasharray: "40 100", strokeDashoffset: 140, opacity: 0 }}
+                                        animate={{ 
+                                            strokeDashoffset: [140, -140],
+                                            opacity: [0, 1, 0]
+                                        }}
+                                        transition={{
+                                            duration: 2.5,
+                                            repeat: Infinity,
+                                            ease: "linear",
+                                            delay: i * 0.2,
+                                        }}
                                     />
                                 </g>
                             );
                         })}
-
-                        {/* Glowing blue convergence lines at bottom */}
-                        <motion.path
-                            d="M 20% 70% Q 35% 85%, 50% 95%"
-                            stroke="url(#blueGradient)"
-                            strokeWidth="2"
-                            fill="none"
-                            filter="url(#glow)"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            whileInView={{ pathLength: 1, opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.8, delay: 1, ease: "easeOut" }}
-                        />
-                        <motion.path
-                            d="M 80% 70% Q 65% 85%, 50% 95%"
-                            stroke="url(#blueGradient)"
-                            strokeWidth="2"
-                            fill="none"
-                            filter="url(#glow)"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            whileInView={{ pathLength: 1, opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.8, delay: 1.1, ease: "easeOut" }}
-                        />
-                        <motion.path
-                            d="M 35% 60% Q 42% 78%, 50% 95%"
-                            stroke="url(#blueGradient)"
-                            strokeWidth="2"
-                            fill="none"
-                            filter="url(#glow)"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            whileInView={{ pathLength: 1, opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.8, delay: 1.2, ease: "easeOut" }}
-                        />
-                        <motion.path
-                            d="M 65% 60% Q 58% 78%, 50% 95%"
-                            stroke="url(#blueGradient)"
-                            strokeWidth="2"
-                            fill="none"
-                            filter="url(#glow)"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            whileInView={{ pathLength: 1, opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.8, delay: 1.3, ease: "easeOut" }}
-                        />
-
-                        {/* Gradient definition */}
-                        <defs>
-                            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stopColor="rgba(59, 130, 246, 0.3)" />
-                                <stop offset="100%" stopColor="rgba(59, 130, 246, 1)" />
-                            </linearGradient>
-                        </defs>
+                        
+                        {/* Central Blue Glow Line at bottom */}
+                        <g>
+                            <motion.path
+                                d="M 50% 320 L 50% 360"
+                                stroke="#3B82F6"
+                                strokeWidth="5"
+                                filter="url(#glow-blue)"
+                                initial={{ pathLength: 0, opacity: 0 }}
+                                animate={{ pathLength: 1, opacity: 1 }}
+                                transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
+                            />
+                            <motion.path
+                                d="M 50% 320 L 50% 360"
+                                stroke="#60A5FA"
+                                strokeWidth="2"
+                                filter="url(#glow-blue)"
+                                initial={{ strokeDasharray: "0 40", opacity: 0 }}
+                                animate={{ strokeDasharray: "20 40", opacity: 1 }}
+                                transition={{
+                                    duration: 1.5,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                    delay: 2.5
+                                }}
+                            />
+                        </g>
                     </svg>
 
-                    {/* Platform Icons */}
-                    {platforms.map((platform, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, scale: 0 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                            className="absolute"
-                            style={{
-                                top: platform.position.top,
-                                left: platform.position.left,
-                                transform: 'translate(-50%, -50%)',
-                                zIndex: 2
-                            }}
-                        >
-                            <div className="flex flex-col items-center gap-2">
-                                <div className="w-12 h-12 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-2xl hover:bg-white/10 transition-all cursor-pointer">
-                                    {platform.icon}
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-
-                    {/* Center Star Icon */}
+                    {/* Bottom Star Icon */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                        whileInView={{ opacity: 1, scale: 1, rotate: 180 }}
+                        initial={{ scale: 0, opacity: 0, rotate: -180 }}
+                        whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
-                        className="absolute"
-                        style={{
-                            bottom: "5%",
-                            left: "50%",
-                            transform: 'translate(-50%, 0)',
-                            zIndex: 3
-                        }}
+                        transition={{ duration: 0.8, delay: 2.2, type: "spring" }}
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20"
                     >
-                        <div className="text-5xl text-blue-400">
-                            ✦
-                        </div>
+                        <img 
+                            src="https://framerusercontent.com/images/Uj8jipvDg5qYMeqEsGdo9BKuos.png" 
+                            alt="Flow Star" 
+                            className="w-24 h-24 object-contain drop-shadow-[0_0_15px_rgba(59,130,246,0.8)]"
+                        />
                     </motion.div>
+
                 </div>
             </div>
         </section>
