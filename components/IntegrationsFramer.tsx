@@ -18,7 +18,7 @@ export default function IntegrationsFramerAlignedIcons() {
 
   return (
     <section className="py-28 px-6 bg-[#050505] text-white overflow-hidden w-full relative min-h-screen flex flex-col items-center justify-center">
-      <div className="max-w-5xl mx-auto relative z-10 w-full text-center">
+      <div className="max-w-2xl mx-auto relative z-10 w-full text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

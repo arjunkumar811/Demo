@@ -13,14 +13,12 @@ export default function Footer() {
 
                     {/* Left Column - Logo & Description */}
                     <div className="lg:col-span-5 space-y-6">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-3">
+                            {/* Bigger FLOW icon left of logo */}
+                            <span className="inline-block w-[64px] h-[64px] mr-3">
+                                <img src="https://framerusercontent.com/images/Uj8jipvDg5qYMeqEsGdo9BKuos.png" alt="Flow Icon" className="w-full h-full object-contain" />
+                            </span>
                             <h1 className="text-4xl font-bold tracking-tight">VZNX</h1>
-                            <div className="relative w-7 h-7">
-                                <div className="absolute inset-0 bg-blue-500 blur-md opacity-60 rounded-full" />
-                                <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full text-white relative z-10">
-                                    <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
-                                </svg>
-                            </div>
                         </div>
 
                         <p className="text-gray-500 leading-relaxed text-base max-w-md">

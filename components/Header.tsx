@@ -13,23 +13,12 @@ export default function Header() {
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-[#050505]/90 backdrop-blur-md border-b border-white/5"
         >
             {/* Logo with animated arrow */}
-            <Link href="/" className="flex items-center gap-1 group">
-                <span className="text-2xl font-bold tracking-tighter text-white">VZNX</span>
-                <motion.div
-                    animate={{
-                        rotate: [0, 90, 180, 270, 360],
-                    }}
-                    transition={{
-                        duration: 8,
-                        repeat: Infinity,
-                        ease: "linear",
-                    }}
-                    className="text-blue-600"
-                >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
-                    </svg>
-                </motion.div>
+            <Link href="/" className="flex items-center gap-3 group">
+                {/* Bigger FLOW icon and VZNX name */}
+                <span className="inline-block w-[64px] h-[64px]">
+                    <img src="https://framerusercontent.com/images/Uj8jipvDg5qYMeqEsGdo9BKuos.png" alt="Flow Logo" className="w-full h-full object-contain" />
+                </span>
+                <span className="text-3xl font-bold tracking-tighter text-white">VZNX</span>
             </Link>
 
             {/* Navigation */}
